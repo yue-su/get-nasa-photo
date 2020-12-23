@@ -17,7 +17,7 @@ server.get("/api/ping", (req, res) => {
   res.status(200).json({ success: true })
 })
 
-server.get("/api/photos-of-week", (req, res) => {
+server.get("/api/photos", (req, res) => {
   const days = req.query.days
   const dates = generateCurrentWeek(days)
   console.log(dates)

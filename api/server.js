@@ -20,7 +20,6 @@ server.get("/api/ping", (req, res) => {
 server.get("/api/photos", (req, res) => {
   const days = req.query.days
   const dates = generateCurrentWeek(days)
-  console.log(dates)
 
   const functionArray = dates.map((date) => {
     return async function () {

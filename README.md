@@ -42,3 +42,23 @@ result:
 }
 
 ```
+
+### Making concurrent API calls with async.parallel
+
+```
+server.get("/api/photos", (req, res) => {
+  const days = req.query.days
+  const dates = generateCurrentWeek(days)
+
+  const functionArray = dates.map((date) => {
+    return async function () {
+      const data = await axios.get(`${URL}?api_key=${api_key}&date=${date}`)
+      return data.data
+    }
+  })
+
+  async.parallel(functionArray, (err, result) => {
+    res.status(200).json({ items: result.length, photos: result })
+  })
+})
+```

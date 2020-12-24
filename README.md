@@ -48,7 +48,7 @@ result:
 ```
 server.get("/api/photos", (req, res) => {
   const days = req.query.days
-  const dates = generateCurrentWeek(days)
+  const dates = generateDates(days)
 
   const functionArray = dates.map((date) => {
     return async function () {

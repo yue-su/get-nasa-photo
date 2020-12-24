@@ -19,7 +19,7 @@ server.get("/api/ping", (req, res) => {
 
 server.get("/api/photos", (req, res) => {
   const days = req.query.days
-  const dates = generateCurrentWeek(days)
+  const dates = generateDates(days)
 
   const functionArray = dates.map((date) => {
     return async function () {
@@ -33,7 +33,7 @@ server.get("/api/photos", (req, res) => {
   })
 })
 
-function generateCurrentWeek(numberOfDays) {
+function generateDates(numberOfDays) {
   const result = []
   const today = new Date()
 
